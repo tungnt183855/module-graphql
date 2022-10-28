@@ -1,0 +1,70 @@
+type Query {
+    templates (template_id: Int): [Template]
+        @resolver(class: "Magenest\\PopupGraphQl\\Model\\Resolver\\Templates")
+        @doc(description: "Get popup template")
+    logs (log_id: Int): [Log]
+        @resolver(class: "Magenest\\PopupGraphQl\\Model\\Resolver\\Logs")
+        @doc(description: "Get popup log")
+    popups (popup_id: Int): [Popup]
+        @resolver(class: "Magenest\\PopupGraphQl\\Model\\Resolver\\Popups")
+        @doc(description: "Get list popup")
+}
+
+type Template {
+    template_id: Int
+    template_name: String
+    template_type: Int
+    html_content: String
+    css_style: String
+    class: String
+    status: Int
+}
+
+type Log {
+    log_id: Int
+    popup_id: String
+    content: String
+    created_at: String
+    popup_name: String
+}
+
+type Popup {
+    popup_id: Int
+    popup_name: String
+    popup_type: Int
+    popup_status: Int
+    start_date: String
+    end_date: String
+    priority: Int
+    popup_template_id: Int
+    popup_trigger: Int
+    number_x: Int
+    popup_positioninpage: Int
+    popup_position: Int
+    popup_animation: Int
+    visible_stores: String
+    enable_cookie_lifetime: Int
+    cookie_lifetime: String
+    coupon_code: String
+    thankyou_message: String
+    html_content: String
+    css_style: String
+    click: Int
+    view: Int
+    ctr: String
+    popup_link: String
+    enable_floating_button: Int
+    floating_button_content: String
+    floating_button_position: Int
+    floating_button_text_color: String
+    floating_button_text_hover_color: String
+    floating_button_hover_color: String
+    floating_button_background_color: String
+    floating_button_display_popup: Int
+    enable_mailchimp: Int
+    api_key: String
+    audience_id: String
+    widget_instance: String
+    customer_group_ids: String
+    background_image: String
+}
