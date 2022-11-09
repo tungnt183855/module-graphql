@@ -1,3 +1,7 @@
+type StoreConfig @doc(description: "The type contains information about a store config") {
+    magenest_popup_general_enabled: Boolean @doc(description: "Enable module popup")
+}
+
 type Query {
     templates (template_id: Int): [Template]
         @resolver(class: "Magenest\\PopupGraphQl\\Model\\Resolver\\Templates")
