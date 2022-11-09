@@ -1,0 +1,87 @@
+type StoreConfig @doc(description: "The type contains information about a store config") {
+    photoreview_general_enable: Boolean @doc(description: "Enable Photo Review module in the product detail page.")
+    photoreview_general_pros_cons: Boolean @doc(description: "Enable Pros and Cons sections in customers’ reviews.")
+    photoreview_general_allow_admin_comment: Boolean @doc(description: "Allow admin change comment caption")
+    photoreview_general_photo_required: Boolean @doc(description: "Require photos in customers’ reviews")
+    photoreview_general_max_photo_upload: Int @doc(description: "The maximum number of photos customers can upload.")
+    photoreview_general_add_link_to_frontend: Boolean @doc(description: "Add Review Gallery tab to the main menu.")
+    photoreview_general_menu_title: String @doc(description: "Set the title for the review gallery tab on the main menu.")
+    photoreview_general_external_links: Boolean @doc(description: "Allow customers to add external links to their product reviews.")
+    photoreview_general_facebook_app_ai: Boolean @doc(description: "Facebook App ID for customers to be able to share their reviews via Facebook or Twitter.")
+    photoreview_review_reminder_enable: Boolean @doc(description: "Send review reminding emails to customers automatically.")
+    photoreview_review_reminder_send_after: Int @doc(description: "Schedule the time to send review reminder email to customers after their purchase.  The default unit is day.")
+    photoreview_review_reminder_email_sender: String @doc(description: "The sender for the reminder emails.")
+    photoreview_review_reminder_email_template: String @doc(description: "The appropriate email template for the review reminding email.")
+    photoreview_coupon_review_enable: Boolean @doc(description: "Send customers coupons after their reviews ")
+    photoreview_coupon_review_apply_cartrule: Int @doc(description: "Cart Price Rule to apply to the coupon.")
+    photoreview_coupon_review_email_sender: String @doc(description: "The sender for the coupon code emails.")
+    photoreview_coupon_review_email_template: String @doc(description: "The appropriate email template for the coupon code emails.")
+}
+
+type Query {
+    reviews (
+        product_id: Int @doc(description: "Id of product")
+        sku: String @doc(description: "SKU of product")
+    ): [Review]
+    @resolver(class: "Magenest\\PhotoReviewGraphQl\\Model\\Resolver\\Reviews")
+    @doc(description: "Get review")
+}
+
+
+type Review {
+    sku_product: String @resolver(class: "Magenest\\PhotoReviewGraphQl\\Model\\Resolver\\Product") @doc(description: "Get sku product.")
+    custom_id: Int @doc(description: "Id of photo review")
+    review_id: Int @doc(description: "Review id of table review, magenest_photoreview_detail, magenest_photoreview_photo")
+    photo_review_is_recommend: Int @doc(description: "The photo review recommend")
+    photo_review_pros: String @doc(description: "The photo review pros")
+    photo_review_cons: String @doc(description: "The photo review cons")
+    admin_comment: String @doc(description: "The comment of admin for this review")
+    photo_external_links: String @doc(description: "External link in review")
+    is_purchased: Int @doc(description: "The product is purchased")
+    rating_sum: Int @doc(description: "The rating of review")
+    order_id: Int @doc(description: "Order id of review")
+    detail_id: Int @doc(description: "The ID number assigned to the review")
+    store_id: Int @doc(description: "The ID number assigned to the store")
+    title: String @doc(description: "Title review")
+    detail: String @doc(description: "Detail review")
+    nickname: String @doc(description: "Nickname of customer review")
+    customer_id: Int @doc(description: "Customer Id of review")
+    is_photo_review: Boolean @resolver(class: "Magenest\\PhotoReviewGraphQl\\Model\\Resolver\\IsPhotoReview") @doc(description: "This is review of module magenest photoreview or not.")
+    photo_review_img: [PhotoReviewImg] @resolver(class: "Magenest\\PhotoReviewGraphQl\\Model\\Resolver\\PhotoReviewImg") @doc(description: "Get photo review img by review_id")
+}
+
+
+type PhotoReviewImg {
+    photo_id: Int @doc(description: "Id of photo")
+    review_id: Int @doc(description: "Review id of table review, magenest_photoreview_detail, magenest_photoreview_photo")
+    path: String @doc(description: "Patch image save")
+    store_id: Int @doc(description: "The ID number assigned to the store")
+}
+
+type Mutation {
+    createProductReview(input: CreateProductReviewInput!): CreateProductReviewOutput! @doc(description: "Creates a product review for the specified SKU") @resolver(class: "Magenest\\PhotoReviewGraphQl\\Model\\Resolver\\CreateProductPhotoReview")
+}
+
+input CreateProductReviewInput {
+    photo_review_is_recommend: Int @doc(description: "Recommend buy this product")
+    photo_review_pros: String @doc(description: "Describe the product’s pros in review")
+    photo_review_cons: String @doc(description: "Describe the product’s cons in review")
+    photo_external_links: String @doc(description: "External link in review")
+    photo: [Photo] @doc(description: "Input list image encoded base64 ")
+}
+
+input Photo {
+    base64: String @doc(description: "File image encoded base64")
+}
+
+type PhotoBase64 {
+    base64: String @doc(description: "File image encoded base64")
+}
+
+type ProductReview {
+    photo_review_is_recommend: Int @doc(description: "Recommend buy this product")
+    photo_review_pros: String @doc(description: "Describe the product’s pros in review")
+    photo_review_cons: String @doc(description: "Describe the product’s cons in review")
+    photo_external_links: String @doc(description: "External link in review")
+    photo: [PhotoBase64] @doc(description: "List image encoded base64")
+}

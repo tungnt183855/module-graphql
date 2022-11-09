@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+        <arguments>
+            <argument name="extendedConfigData" xsi:type="array">
+                <item name="photoreview_general_enable" xsi:type="string">photoreview/general/enable</item>
+                <item name="photoreview_general_pros_cons" xsi:type="string">photoreview/general/pros_cons</item>
+                <item name="photoreview_general_allow_admin_comment" xsi:type="string">photoreview/general/allow_admin_comment</item>
+                <item name="photoreview_general_photo_required" xsi:type="string">photoreview/general/photo_required</item>
+                <item name="photoreview_general_max_photo_upload" xsi:type="string">photoreview/general/max_photo_upload</item>
+                <item name="photoreview_general_add_link_to_frontend" xsi:type="string">photoreview/general/add_link_to_frontend</item>
+                <item name="photoreview_general_menu_title" xsi:type="string">photoreview/general/menu_title</item>
+                <item name="photoreview_general_external_links" xsi:type="string">photoreview/general/external_links</item>
+                <item name="photoreview_general_facebook_app_ai" xsi:type="string">photoreview/general/facebook_app_ai</item>
+                <item name="photoreview_review_reminder_enable" xsi:type="string">photoreview/review_reminder/enable</item>
+                <item name="photoreview_review_reminder_send_after" xsi:type="string">photoreview/review_reminder/send_after</item>
+                <item name="photoreview_review_reminder_email_sender" xsi:type="string">photoreview/review_reminder/email_sender</item>
+                <item name="photoreview_review_reminder_email_template" xsi:type="string">photoreview/review_reminder/email_template</item>
+                <item name="photoreview_coupon_review_enable" xsi:type="string">photoreview/coupon_review/enable</item>
+                <item name="photoreview_coupon_review_apply_cartrule" xsi:type="string">photoreview/coupon_review/apply_cartrule</item>
+                <item name="photoreview_coupon_review_email_sender" xsi:type="string">photoreview/coupon_review/email_sender</item>
+                <item name="photoreview_coupon_review_email_template" xsi:type="string">photoreview/coupon_review/email_template</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
