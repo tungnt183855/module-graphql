@@ -1,0 +1,83 @@
+type StoreConfig @doc(description: "The type contains information about a store config") {
+    maplist_general_show_item_section: Boolean
+    maplist_general_wall_color: String
+    maplist_general_show_stock_label: Boolean
+    maplist_display_store_logo: Boolean
+    maplist_display_marker_icon: String
+    maplist_display_marker_icon_highlight: String
+    maplist_display_display_covid_widget_on_store_detail_page: Boolean
+    maplist_map_api: String
+    maplist_map_unit: String
+    maplist_map_zoom: Int
+    maplist_default_opening_time_default_opening_time_monday: String
+    maplist_default_opening_time_default_opening_time_tuesday: String
+    maplist_default_opening_time_default_opening_time_wednesday: String
+    maplist_default_opening_time_default_opening_time_thursday: String
+    maplist_default_opening_time_default_opening_time_friday: String
+    maplist_default_opening_time_default_opening_time_saturday: String
+    maplist_default_opening_time_default_opening_time_sunday: String
+}
+
+type Query {
+    maplist (
+        location_id: Int @doc(description: "Id of maplist location") @doc(description: "Return information of maplist location.")
+        website: String @doc(description: "Website of maplist location") @doc(description: "Return information of all maplist location have this website.")
+    ): [MapList]
+    @resolver(class: "Magenest\\MapListGraphQl\\Model\\Resolver\\MapList")
+    @doc(description: "Get map list location data")
+}
+
+type MapList {
+    location_id: Int
+    entity_id: Int
+    title: String
+    description: String
+    short_description: String
+    latitude: String
+    longitude: String
+    address: String
+    website: String
+    email: String
+    phone_number: String
+    big_image: String
+    is_active: Int
+    created_at: String
+    updated_at: String
+    country: String
+    state_province: String
+    city: String
+    zip: String
+    is_use_default_opening_hours: String
+    opening_hours: String
+    special_date: String
+    gallery: String
+    small_image: String
+    store: String
+    meta_title: String
+    meta_keywords: String
+    meta_description: String
+    enable_seo: Int
+    parking: Boolean
+    atm: Boolean
+    new_arrivals: String
+    payment_methods: String
+    brands: String
+    add_product_type: Int
+    source_list: String
+    maplist_location_product: [LocationProduct] @resolver(class: "Magenest\\MapListGraphQl\\Model\\Resolver\\LocationProduct") @doc(description: "Get maplist location product")
+    maplist_store_product: [StoreProduct] @resolver(class: "Magenest\\MapListGraphQl\\Model\\Resolver\\StoreProduct") @doc(description: "Get maplist store product")
+}
+
+type LocationProduct {
+    location_product_id: Int
+    location_id: Int
+    product_id: Int
+    created_at: String
+    updated_at: String
+}
+
+type StoreProduct {
+    store_product_id: Int
+    product_id: Int
+    location_id: Int
+}

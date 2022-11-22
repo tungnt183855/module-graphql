@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+        <arguments>
+            <argument name="extendedConfigData" xsi:type="array">
+                <item name="maplist_general_show_item_section" xsi:type="string">maplist/general/show_item_section</item>
+                <item name="maplist_general_wall_color" xsi:type="string">maplist/general/wall_color</item>
+                <item name="maplist_general_show_stock_label" xsi:type="string">maplist/general/show_stock_label</item>
+                <item name="maplist_display_store_logo" xsi:type="string">maplist/display/store_logo</item>
+                <item name="maplist_display_marker_icon" xsi:type="string">maplist/display/marker_icon</item>
+                <item name="maplist_display_marker_icon_highlight" xsi:type="string">maplist/display/marker_icon_highlight</item>
+                <item name="maplist_display_display_covid_widget_on_store_detail_page" xsi:type="string">maplist/display/display_covid_widget_on_store_detail_page</item>
+                <item name="maplist_map_api" xsi:type="string">maplist/map/api</item>
+                <item name="maplist_map_unit" xsi:type="string">maplist/map/unit</item>
+                <item name="maplist_map_zoom" xsi:type="string">maplist/map/zoom</item>
+                <item name="maplist_default_opening_time_default_opening_time_monday" xsi:type="string">maplist/default_opening_time/default_opening_time_monday</item>
+                <item name="maplist_default_opening_time_default_opening_time_tuesday" xsi:type="string">maplist/default_opening_time/default_opening_time_tuesday</item>
+                <item name="maplist_default_opening_time_default_opening_time_wednesday" xsi:type="string">maplist/default_opening_time/default_opening_time_wednesday</item>
+                <item name="maplist_default_opening_time_default_opening_time_thursday" xsi:type="string">maplist/default_opening_time/default_opening_time_thursday</item>
+                <item name="maplist_default_opening_time_default_opening_time_friday" xsi:type="string">maplist/default_opening_time/default_opening_time_friday</item>
+                <item name="maplist_default_opening_time_default_opening_time_saturday" xsi:type="string">maplist/default_opening_time/default_opening_time_saturday</item>
+                <item name="maplist_default_opening_time_default_opening_time_sunday" xsi:type="string">maplist/default_opening_time/default_opening_time_sunday</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
